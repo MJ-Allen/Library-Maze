@@ -20,7 +20,7 @@ const typeDefs = gql`
 
   type Auth {
     token: ID!
-    profile: User
+    user: User
   }
 
   input BookInput {
