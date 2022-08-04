@@ -1,12 +1,12 @@
 const {
   AuthenticationError
-} = require('apollo-server-express');
+} = require("apollo-server-express");
 const {
   signToken
-} = require('../utils/auth');
+} = require("../utils/auth");
 const {
   User
-} = require('../models');
+} = require("../models");
 // followed along with class video from Thursday to get started
 const resolvers = {
   Query: {
@@ -17,7 +17,7 @@ const resolvers = {
         });
         return userData;
       }
-      throw new AuthenticationError('Please log in!');
+      throw new AuthenticationError("Please log in!");
     }
   },
   Mutation: {
@@ -45,11 +45,11 @@ const resolvers = {
         email
       });
       if (!user) {
-        throw new AuthenticationError('Email not found');
+        throw new AuthenticationError("Email not found");
       }
       const correctPw = await user.isCorrectPassword(password);
       if (!correctPw) {
-        throw new AuthenticationError('Enter Correct Credentials');
+        throw new AuthenticationError("Enter Correct Credentials");
       }
       const token = signToken(user);
       return {
@@ -75,7 +75,7 @@ const resolvers = {
 
         return updatedUser;
       }
-      throw new AuthenticationError('Please Login!');
+      throw new AuthenticationError("Please Login!");
     },
     // remove a book from `savedBooks`
     removeBook: async (parent, {
@@ -97,10 +97,11 @@ const resolvers = {
         return updatedUser;
 
       }
-      throw new AuthenticationError('Book not deleted');
+      throw new AuthenticationError("Book not deleted");
     }
 
   },
 };
+
 
 module.exports = resolvers;
