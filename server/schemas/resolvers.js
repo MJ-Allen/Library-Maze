@@ -1,7 +1,7 @@
 //Import required packages 
 const { User } = require("../models");
-const { AuthenticationError } = require('apollo-server-express');
-const { signToken } = require('../utils/auth');
+const { AuthenticationError } = require("apollo-server-express");
+const { signToken } = require("../utils/auth");
 
 const resolvers = {
 
@@ -23,7 +23,7 @@ const resolvers = {
         //Login user if exist already 
         login: async (parent, { email, password }) => {
 
-            //Find user's username and password 
+            //Find user"s username and password 
             const user = await User.findOne({ email });
 
             //Display error if user email is incorrect
